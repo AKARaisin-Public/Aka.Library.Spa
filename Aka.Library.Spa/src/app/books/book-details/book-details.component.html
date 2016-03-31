@@ -1,0 +1,27 @@
+<section *ngIf="book" fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Book Title: {{ book.title }} - {{ book.isbn }}</mat-card-title>
+      <mat-card-subtitle><span *ngIf="bookMetadata">Author(s): {{bookMetadata.authors}} - </span>published {{ book.dateOfPublication | date }} </mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="bookMetadata" mat-card-image [src]="bookMetadata.imageLinks.thumbnail" alt="{{book.title}}">
+    <mat-card-content>
+      <div *ngIf="bookMetadata" class="book-description">
+        <p>{{bookMetadata.description}}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button *ngIf="book.isCheckedOut" mat-button (click)="returnBook()">Return</button>
+      <button [disabled]="!book.isAvailable || numBooksSignedOut >= 2" mat-button (click)="checkOutBook()">Check out</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <p *ngIf="book.isCheckedOut">
+        You have borrowed {{numOfThisBookSignedOutByUser}} copies of this book
+      </p>
+      <p *ngIf="book.isAvailable">
+        There are {{numBooksAvailable}} copies available to borrow
+      </p>
+      <p>The maximum number of books you can check out is 2. You have currently checked out: {{numBooksSignedOut}}</p>
+    </mat-card-footer>
+  </mat-card>
+</section>

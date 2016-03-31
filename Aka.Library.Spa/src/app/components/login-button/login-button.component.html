@@ -1,0 +1,2 @@
+<button class="nav-link" mat-button *ngIf="isLoggedIn$ | async" routerLink="login" routerLinkActive="active" (click)="onLogout($event)">Logout</button>
+<button class="nav-link" mat-button *ngIf="!(isLoggedIn$ | async)">Login</button>

@@ -1,0 +1,45 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+    <mat-table #table [dataSource]="dataSource" matSort matSortActive="title" matSortDisableClear matSortDirection="asc">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.libraryBookSid}} </mat-cell>
+      </ng-container>
+  
+      <!-- Library Name Column -->
+      <ng-container matColumnDef="library">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Library Name </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.libraryName}}</mat-cell>
+      </ng-container>
+  
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.bookName}}</mat-cell>
+      </ng-container>
+  
+      <!-- Chedked Out Date Column -->
+      <ng-container matColumnDef="dateCheckedOut">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Checked Out Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.whenSignedOut | date}} </mat-cell>
+      </ng-container>
+  
+      <!-- Returned Date Column -->
+      <ng-container matColumnDef="dateReturned">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Date Returned </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.whenReturned | date}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

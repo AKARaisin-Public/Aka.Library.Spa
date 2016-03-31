@@ -1,0 +1,20 @@
+.circular-progress-button {
+    height: 36px;
+}
+
+.circular-progress-button>md-progress-circular {
+    margin: auto;
+    margin-top: -6px; /* If circular does not appear at the center, change this value. */
+}
+
+.circular-progress-button>md-progress-circular .md-half-circle {
+    border-top-color: white !important;
+}
+
+.circular-progress-button>md-progress-circular .md-left>.md-half-circle {
+    border-left-color: white;
+}
+
+.circular-progress-button>md-progress-circular .md-right>.md-half-circle {
+    border-right-color: white;
+}

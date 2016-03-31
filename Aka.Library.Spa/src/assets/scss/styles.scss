@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/scss/functions';
+@import 'custom.scss';
+@import '~bootstrap/scss/bootstrap';
+
+/* adjust path as needed */
+$fa-font-path: "../../../node_modules/font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome';
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/theming";
+
+/* Structure */
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  margin-top: 30px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+
+  .mat-row {
+    &:hover {
+      background-color:  $table-hover-bg;
+      cursor: pointer;
+
+      .mat-cell {
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}
+
+.mat-card { 
+  .mat-card-header-text { 
+      margin: 0; 
+  }
+}
+
+div[fxLayoutAlign] { 
+  padding: 10px; 
+  padding-left: 25px; 
+  padding-top: 70px;
+}
+  

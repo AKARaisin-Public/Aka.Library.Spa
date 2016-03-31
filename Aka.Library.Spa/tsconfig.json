@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "paths": {
+      "@enums/*": ["src/app/shared/enums/*"],
+      "@interfaces/*": ["src/app/shared/interfaces/*"],
+      "@app-selectors/*": ["src/app/shared/redux/selectors/*"],
+      "@app-actions/*": ["src/app/shared/redux/actions/*"],
+      "@app-reducers/*": ["src/app/shared/redux/reducers/*"],
+      "@app-effects/*": ["src/app/shared/redux/effects/*"],
+      "@app-states/*": ["src/app/shared/redux/states/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"],
+      "@mat/*": ["src/material-design/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
+  },
+  "files.associations": {
+    "tslint.json": "jsonc"
+  }
+}

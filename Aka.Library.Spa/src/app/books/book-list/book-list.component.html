@@ -1,0 +1,45 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort matSortActive="title" matSortDisableClear matSortDirection="asc">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="bookId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bookId}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="isbn">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ISBN </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.isbn}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="dateOfPublication">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Date of publications </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dateOfPublication | date:'fullDate'}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="availability">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Available </mat-header-cell>
+      <mat-cell *matCellDef="let element"><mat-icon>{{element.isAvailable ? 'done' : 'clear'}}</mat-icon></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

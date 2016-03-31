@@ -1,0 +1,35 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+    <mat-table #table [dataSource]="dataSource" matSort matSortActive="title" matSortDisableClear matSortDirection="asc">
+      
+      <ng-container matColumnDef="bookId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bookId}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="whenSignedOut">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Book signed out on </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.whenSignedOut | date:'fullDate'}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="whenReturned">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Bookmreturned on </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.whenReturned | date:'fullDate'}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>

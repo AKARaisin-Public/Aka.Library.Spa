@@ -1,0 +1,6 @@
+
+<section *ngIf="library$ | async as library">
+  <h1>{{ library.name }}</h1>
+  
+  <app-book-list [library]="library"></app-book-list>
+</section>

@@ -1,0 +1,10 @@
+<div class="row clearfix">
+  <div class="col-4 offset-sm-4">
+    <mat-list>
+      <mat-list-item *ngFor="let member of members | async" (click)="onMemberClicked(member)">
+        <h3 matLine> Full name: {{member.fullName}} </h3>
+        <p matLine> Number of books signed out: {{member.bookSignedOuts.length}} </p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
