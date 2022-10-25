@@ -1,0 +1,17 @@
+<section *ngIf="book" fxLayout="row wrap" fxLayoutAlign="center center">
+  <h2>Book Title: {{ book.title }} - {{ book.isbn }}</h2>
+  <div>
+    <button *ngIf="book.isCheckedOut" mat-button (click)="returnBook()">Return</button>
+    <button [disabled]="!book.isAvailable || isMaximumNumberOfBooksSignedOut()" mat-button
+      (click)="checkOutBook()">Check out</button>
+  </div>
+  <div>
+    <p *ngIf="book.isCheckedOut">
+      You have borrowed {{numOfThisBookSignedOutByUser}} copies of this book
+    </p>
+    <p *ngIf="book.isAvailable">
+      There are {{numBooksAvailable}} copies available to borrow
+    </p>
+    <p>The maximum number of books you can check out is 2. You have currently checked out: {{numBooksSignedOut}}</p>
+  </div>
+</section>

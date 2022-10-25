@@ -1,0 +1,37 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary navbar-toggler-left navbar-toggleable-md">
+  <div class="container">
+    <a class="navbar-brand" routerLink="libraries">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <button class="nav-link" mat-button routerLink="libraries" routerLinkActive="active">Libraries</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="isLoggedIn$ | async" mat-button
+            [routerLink]="['members', getAuthUser().memberId]" routerLinkActive="active">Profile</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="isLoggedIn$ | async" mat-button [routerLink]="['checked-out']"
+            routerLinkActive="active">Checked Out</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="isLoggedIn$ | async" mat-button [routerLink]="['checked-out/history']"
+            routerLinkActive="active">History</button>
+        </li>
+        <li class="nav-item">
+          <app-login-button css="nav-link"></app-login-button>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <span *ngIf="isLoggedIn$ | async">
+          User: {{ getAuthUser().fullName }}
+        </span>
+        Library System
+      </span>
+    </div>
+  </div>
+</nav>
